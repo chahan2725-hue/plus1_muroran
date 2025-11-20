@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>プラスワン | 室蘭 子育て応援イベント</title>
+    <meta name="description" content="室蘭で開催される子育て応援イベント「プラスワン (plus 1)」。ハンドメイド、フード、ワークショップが大集合！">
+    
+    <style>
+        /* ====================================================================
+           BASE & UTILITIES
+           ==================================================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Hiragino Kaku Gothic ProN', 'メイリオ', Meiryo, sans-serif;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f8f8f8;
+            scroll-behavior: smooth;
+        }
+
+        a {
+            text-decoration: none;
+            color: #4a6c6f; /* フッターや本文中のリンク色 */
+        }
+
+        /* ページ全体の中央コンテナ */
+        .container {
+            width: 90%;
+            max-width: 960px; /* Max幅を広げました */
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        /* 全セクション共通のパディング */
+        .section {
+            padding: 70px 0;
+        }
+
+        .section-gray {
+            background-color: #fcfbf5; /* 淡いクリーム系のグレー */
+        }
+        
+        /* セクション共通の見出しスタイル */
+        h2 {
+            text-align: center;
+            font-size: 2.2em; /* フォントサイズを大きく */
+            margin-bottom: 40px;
+            color: #a35b44;
+            border-bottom: 3px double #e38965; /* 二重線に装飾変更 */
+            display: block;
+            width: fit-content;
+            margin-left: auto;
+            margin-right: auto;
+            padding-bottom: 10px;
+        }
+
+        /* ====================================================================
+           0. NAVIGATION & FOOTER
+           ==================================================================== */
+        
+        /* グローバルナビゲーション (Sticky Header) */
+        #nav {
+            background-color: #a35b44;
+            padding: 10px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+        #nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 5%;
+        }
+        #nav a {
+            /* 💡 修正箇所：文字色を白色に固定 */
+            color: white; 
+            font-size: 1em;
+            margin-left: 20px;
+            padding: 5px 0;
+            transition: opacity 0.3s;
+            font-weight: bold;
+        }
+        #nav a:first-child {
+            margin-left: 0; /* TOPリンクの調整 */
+        }
+        #nav a:hover {
+            /* 💡 修正箇所：ホバー時の文字色も白色のまま、透明度で変化 */
+            color: white; 
+            opacity: 0.8;
+        }
+
+        /* トップへ戻るボタン */
+        #pagetop {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #e38965;
+            color: white;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            border-radius: 50%;
+            font-size: 0.8em;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: opacity 0.3s;
+            z-index: 900;
+        }
+        #pagetop:hover {
+            opacity: 0.8;
+        }
+
+        /* フッター */
+        footer {
+            background-color: #4a6c6f;
+            color: white;
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+        footer .footer-nav a {
+            color: #f5f0e3; /* 明るい色で視認性向上 */
+            margin: 0 10px;
+        }
+        footer .sns-links {
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
+        /* ====================================================================
+           1. MAIN VISUAL
+           ==================================================================== */
+        #main-visual {
+            /* 背景画像はダミーです。実際はファイルを配置してください。 */
+            background-image: linear-gradient(rgba(255, 251, 230, 0.8), rgba(255, 251, 230, 0.8)), url('main-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #333;
+            text-align: center;
+            padding: 120px 0;
+            min-height: 500px;
+        }
+
+        #main-visual h1 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: #a35b44;
+            line-height: 1.2;
+            text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
+        }
+
+        .catchphrase {
+            font-size: 1.2em;
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .date-location {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 2px solid #e38965;
+            font-weight: bold;
+        }
+
+        .btn-main {
+            display: inline-block;
+            background-color: #e38965;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 1.2em;
+            margin-top: 30px;
+            transition: background-color 0.3s, transform 0.2s;
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+            border-bottom: 4px solid #d17551; /* 立体感 */
+        }
+
+        .btn-main:hover {
+            background-color: #d17551;
+            transform: translateY(2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-bottom: 2px solid #d17551;
+        }
+
+        /* カウントダウンタイマー */
+        #timer-container {
+            margin-top: 30px;
+            padding: 18px 25px;
+            background-color: #4a6c6f; /* 背景色を変更 */
+            color: white;
+            border-radius: 10px;
+            display: inline-block;
+            font-size: 1.1em;
+            font-weight: bold;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        #countdown-timer {
+            font-size: 1.8em;
+            display: block;
+            margin-top: 5px;
+            letter-spacing: 1px;
+        }
+        
+        /* ====================================================================
+           4. FEATURES & CONCEPT
+           ==================================================================== */
+        
+        /* コンセプトセクションのテキスト強調 */
+        #concept p {
+            max-width: 700px;
+            margin: 15px auto;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        /* 魅力グリッド */
+        #features .feature-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #features .feature-item {
+            flex: 1;
+            padding: 30px 20px;
+            background-color: white;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            border-top: 5px solid #a35b44;
+        }
+        #features .feature-item h3 {
+            color: #a35b44;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        /* ====================================================================
+           12. BOOTH LIST
+           ==================================================================== */
+        #booths .filter-buttons {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #booths .filter-buttons button {
+            background-color: #f5f0e3;
+            border: 1px solid #a35b44;
+            color: #a35b44;
+            padding: 8px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 20px;
+            transition: background-color 0.2s, color 0.2s;
+            font-weight: bold;
+        }
+        #booths .filter-buttons button.active,
+        #booths .filter-buttons button:hover {
+            background-color: #e38965;
+            color: white;
+            border-color: #e38965;
+        }
+        .booth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .booth-item-link {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            cursor: pointer;
+        }
+        .booth-item {
+            background-color: white;
+            padding: 20px;
+            border-left: 5px solid #a35b44;
+            border-radius: 4px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            height: 100%;
+        }
+        .booth-item-link:hover .booth-item {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            background-color: #fffaf0;
+        }
+        .booth-item h3 {
+            color: #a35b44;
+            margin-bottom: 5px;
+            font-size: 1.2em;
+        }
+        .booth-item .booth-type {
+            display: inline-block;
+            background-color: #f5f0e3;
+            color: #a35b44;
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 10px;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        /* ====================================================================
+           9. TIMETABLE
+           ==================================================================== */
+        .timetable-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px 0;
+            border-bottom: 1px dashed #d17551;
+        }
+        .timetable-item .time {
+            background-color: #e38965;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-right: 20px;
+            min-width: 100px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        .timetable-item .activity {
+            font-size: 1.1em;
+            color: #444;
+        }
+        
+        /* ====================================================================
+           6. RECRUITMENT
+           ==================================================================== */
+        #recruitment {
+            background-color: #e38965;
+            color: white;
+            text-align: center;
+            padding: 50px 0;
+            border-bottom: 8px solid #a35b44;
+        }
+        #recruitment h2 {
+            color: white;
+            border-bottom: 3px double white;
+            margin-bottom: 20px;
+        }
+        .btn-recruit {
+            /* メインボタンのスタイルを上書き */
+            background-color: #fff;
+            color: #a35b44;
+            border-bottom: 4px solid #4a6c6f;
+        }
+        .btn-recruit:hover {
+            background-color: #f0f0f0;
+            transform: translateY(2px);
+            border-bottom: 2px solid #4a6c6f;
+        }
+
+        /* ====================================================================
+           8. GALLERY
+           ==================================================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 200px; /* 画像の高さを統一 */
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        .gallery-item img:hover {
+            transform: scale(1.05);
+        }
+
+        /* ====================================================================
+           3. SNS FEED (INSTAGRAM ONLY)
+           ==================================================================== */
+        #sns-feed .feed-item {
+            text-align: center;
+            /* 中央に埋め込みウィジェットを配置するための調整 */
+        }
+
+        /* ====================================================================
+           10. FAQ (アコーディオン機能)
+           ==================================================================== */
+        #faq .faq-item {
+            background-color: white;
+            margin-bottom: 10px;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #e38965;
+            overflow: hidden;
+        }
+        .faq-question {
+            font-weight: bold;
+            color: #a35b44;
+            padding: 15px 20px;
+            cursor: pointer; /* クリック可能であることを示す */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.2s;
+        }
+        .faq-question:hover {
+            background-color: #fcfbf5;
+        }
+        .faq-question::after {
+            content: '+'; /* アコーディオンのアイコン */
+            font-size: 1.5em;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+        .faq-item.open .faq-question::after {
+            content: '-';
+            transform: rotate(0deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+            padding: 0 20px;
+            background-color: #fcfbf5;
+        }
+        .faq-item.open .faq-answer {
+            max-height: 500px; /* 十分な高さを設定して表示 */
+            padding: 10px 20px 20px 20px;
+        }
+        .faq-answer p {
+            font-size: 0.95em;
+            color: #555;
+            margin-top: 5px;
+        }
+
+        /* ====================================================================
+           5. SUMMARY & ACCESS
+           ==================================================================== */
+        #summary table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 40px;
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        #summary th, #summary td {
+            padding: 15px;
+            text-align: left;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        #summary th {
+            width: 35%;
+            background-color: #e8e6df;
+            color: #a35b44;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        .map-placeholder {
+            text-align: center;
+            border: 5px solid #e38965;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+        .map-placeholder iframe {
+            width: 100%;
+            height: 450px;
+            display: block;
+        }
+
+        /* ====================================================================
+           13. MEDIA QUERIES (レスポンシブ対応)
+           ==================================================================== */
+        @media (max-width: 768px) {
+            h2 {
+                font-size: 1.8em;
+                margin-bottom: 30px;
+            }
+            
+            #main-visual {
+                padding: 80px 0;
+                min-height: 350px;
+            }
+            #main-visual h1 {
+                font-size: 3em;
+            }
+            
+            #nav .container {
+                flex-direction: column;
+                padding: 10px 5%;
+            }
+            #nav div {
+                margin-top: 10px;
+            }
+            #nav a {
+                margin: 0 8px;
+            }
+
+            #features .feature-grid {
+                flex-direction: column;
+            }
+            
+            /* アクセステーブルのレスポンシブ対応 */
+            #summary th, #summary td {
+                display: block;
+                width: 100%;
+            }
+            #summary th {
+                background-color: #a35b44;
+                color: white;
+            }
+        }
+        
+        /* 印刷用CSS (前回のものを維持) */
+        @media print {
+            /* 印刷時に不要な要素を非表示 */
+            #nav, 
+            .btn-main, 
+            .btn-recruit, 
+            #pagetop, 
+            #recruitment, 
+            .filter-buttons,
+            .instagram-media,
+            .sns-links {
+                display: none !important;
+            }
+            /* 他の印刷用スタイルは省略 */
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="nav">
+        <div class="container">
+            <a href="#main-visual">TOP</a>
+            <div>
+                <a href="#booths">ブース</a>
+                <a href="#timetable">時間割</a>
+                <a href="#recruitment">募集</a>
+                <a href="#summary">概要</a>
+                <a href="#faq">FAQ</a>
+            </div>
+        </div>
+    </nav>
+
+    <header id="main-visual">
+        <div class="container">
+            <h1>プラスワン <br> (plus 1)</h1>
+            <p class="catchphrase">頑張っている人にご褒美を！室蘭最大級の子育て応援マーケット</p>
+            <p class="date-location">
+                🗓️ **2025.11.30 (日)** 10:30-15:00<br>
+                📍 **栗林アリーナ**（室蘭）
+            </p>
+            <a href="#recruitment" class="btn-main">出店者募集はこちら！</a>
+
+            <div id="timer-container">
+                開催まで残り... <span id="countdown-timer"></span>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        
+        <section id="concept" class="section">
+            <div class="container">
+                <h2>イベントコンセプト</h2>
+                <p>「子育ては孤独じゃない、頑張りすぎなくても大丈夫」</p>
+                <p>日々奮闘するママやパパに**「プラスワン」**の喜びと癒やしを。美味しいフード、心ときめくハンドメイド、そして家族みんなで楽しめる体験を通じて、明日への活力をチャージしてもらうことが目的です。地域の子育てを応援する企業や団体も集まり、情報交換の場を提供します。</p>
+            </div>
+        </section>
+
+        ---
+
+        <section id="features" class="section section-gray">
+            <div class="container">
+                <h2>プラスワンの魅力</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <h3>🛍️ 厳選ハンドメイド＆フード</h3>
+                        <p>室蘭・登別を中心とした約40店舗のブースが出店予定。地元の旬の食材を使ったキッチンカーや、ここでしか買えないオリジナル雑貨が並びます。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🎤 ステージイベント満載</h3>
+                        <p>キッズダンス、地域アイドルのパフォーマンス、そして子どもたちに大人気のキャラクターショーなど、朝から夕方まで飽きさせないプログラムが充実しています。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>🎨 親子で楽しむ体験コーナー</h3>
+                        <p>木工、アロマキャンドル、ベビーマッサージ体験など、多種多様なワークショップが集合。子どもたちの創造性を育み、親子の思い出作りをサポートします。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="booths" class="section">
+            <div class="container">
+                <h2>出店ブース一覧</h2>
+                
+                <p style="text-align: center; margin-bottom: 20px;">気になるジャンルのブースをフィルタリングできます。</p>
+                <div class="filter-buttons">
+                    <button data-filter="all" class="active">全て表示 (40)</button>
+                    <button data-filter="handmade">ハンドメイド (15)</button>
+                    <button data-filter="food">フード (8)</button>
+                    <button data-filter="workshop">ワークショップ (10)</button>
+                    <button data-filter="healing">癒やし/美容 (7)</button>
+                </div>
+
+                <div class="booth-grid" id="booth-list">
+                    </div>
+                <p style="text-align: center; margin-top: 30px; font-size: 0.9em;">※出店者情報は随時更新されます。ブース名をクリックすると、出店者の外部サイトへ移動します。</p>
+            </div>
+        </section>
+
+        ---
+        
+        <section id="timetable" class="section section-gray">
+            <div class="container">
+                <h2>当日のタイムテーブル</h2>
+                <p style="text-align: center; margin-bottom: 30px; color: #e38965; font-weight: bold;">※時間は変更になる場合がございます。最新情報はInstagramをご確認ください。</p>
+                <div class="timetable-item">
+                    <div class="time">10:30</div>
+                    <div class="activity">**開場** / 全ブースオープン</div>
+                </div>
+                <div class="timetable-item">
+                    <div class="time">10:45</div>
+                    <div class="activity">オープニング：室蘭市立小学校 **吹奏楽団** 演奏</div>
+                </div>
+                <div class="timetable-item">
+                    <div class="time">11:30</div>
+                    <div class="activity">**子育てセミナー**「叱り方と褒め方」（専門家による講演）</div>
+                </div>
+                <div class="timetable-item">
+                    <div class="time">13:00</div>
+                    <div class="activity">アリーナ特設ステージ：**キッズチアダンス** パフォーマンス</div>
+                </div>
+                <div class="timetable-item">
+                    <div class="time">14:00</div>
+                    <div class="activity">**プラスワン抽選会** (豪華景品あり！)</div>
+                </div>
+                <div class="timetable-item">
+                    <div class="time">15:00</div>
+                    <div class="activity">**閉場**</div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="recruitment">
+            <div class="container">
+                <h2>出店者・協賛企業 募集！</h2>
+                <p>あなたの「好き」や「得意」を活かしませんか？室蘭を一緒に盛り上げる仲間を募集中です！</p>
+                <p>ハンドメイド、ワークショップ、フード提供、企業PRブースなど、幅広く募集しています。</p>
+                <a href="【募集詳細ページのURL】" class="btn-main btn-recruit">詳細・応募はこちら</a>
+            </div>
+        </section>
+
+        ---
+
+        <section id="gallery" class="section">
+            <div class="container">
+                <h2>イベントの雰囲気 (ギャラリー)</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="photo1.jpg" alt="賑わう会場の様子"></div>
+                    <div class="gallery-item"><img src="photo2.jpg" alt="ハンドメイド商品の陳列"></div>
+                    <div class="gallery-item"><img src="photo3.jpg" alt="親子で楽しむワークショップ"></div>
+                    <div class="gallery-item"><img src="photo4.jpg" alt="フードブースの様子"></div>
+                </div>
+                <p style="text-align: center; margin-top: 20px; font-size: 0.9em;">写真は過去の開催イメージです。（ファイル名は適宜修正してください）</p>
+            </div>
+        </section>
+
+        ---
+
+        <section id="sns-feed" class="section section-gray">
+            <div class="container">
+                <h2>📢 最新情報 (Instagram)</h2>
+                <p style="text-align: center; margin-bottom: 30px;">最新の出店者情報や当日の状況は公式Instagramで随時更新しています！</p>
+                <div class="feed-item">
+                    <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/p/DODKA-fEc7-/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:540px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);"><div style="padding:16px;"> <a href="https://www.instagram.com/p/DODKA-fEc7-/?utm_source=ig_embed&utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank"> <div style=" display: flex; flex-direction: row; align-items: center;"> <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div></div></div><div style="padding: 19% 0;"></div> <div style="display:block; height:50px; margin:0 auto 12px; width:50px;"><svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink"><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g transform="translate(-511.000000, -20.000000)" fill="#000000"><g><path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path></g></g></g></svg></div><div style="padding-top: 8px;"> <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">この投稿をInstagramで見る</div></div><div style="padding: 12.5% 0;"></div> <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;"><div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div> <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div> <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div></div><div style="margin-left: 8px;"> <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div> <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div></div><div style="margin-left: auto;"> <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div> <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div> <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div></div></div> <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;"> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div> <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div></div></a><p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;"><a href="https://www.instagram.com/p/DODKA-fEc7-/?utm_source=ig_embed&utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">plus 1（ﾌﾟﾗｽﾜﾝ）║ 室蘭 イベント(@plus1_muroran)がシェアした投稿</a></p></div></blockquote>
+                    <script async src="//www.instagram.com/embed.js"></script>
+                </div>
+                <div class="sns-links" style="margin-top: 30px;">
+                    <a href="https://www.instagram.com/plus1_muroran/" target="_blank" style="color: #a35b44; font-size: 1.1em; border: 1px solid #a35b44; padding: 10px 20px; border-radius: 5px; background-color: white;">公式Instagramをフォローする</a>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="faq" class="section">
+            <div class="container">
+                <h2>よくあるご質問 (FAQ)</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 駐車場はありますか？</div>
+                    <div class="faq-answer">
+                        <p>A. 栗林アリーナの無料駐車場（約400台）をご利用いただけます。ただし、イベント当日は混雑が予想されます。できる限り公共交通機関や乗り合わせでのご来場にご協力ください。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 入場料はかかりますか？</div>
+                    <div class="faq-answer">
+                        <p>A. 入場は**無料**です。ただし、一部のワークショップや購入する商品、飲食ブースなどは有料となります。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 雨天の場合も開催されますか？</div>
+                    <div class="faq-answer">
+                        <p>A. 栗林アリーナは**屋内施設**ですので、雨天決行です。荒天や災害時など、やむを得ない中止の場合は前日までに公式Instagramにてお知らせいたします。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. ベビーカーや車椅子での入場は可能ですか？</div>
+                    <div class="faq-answer">
+                        <p>A. はい、可能です。会場はバリアフリー設計となっており、エレベーターや多目的トイレも完備しています。安全のため、混雑時はベビーカーをたたんでいただくようお願いする場合がございます。</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">Q. 飲食スペースはありますか？</div>
+                    <div class="faq-answer">
+                        <p>A. 飲食ブース近くに、専用のイートインスペースを設ける予定です。座席数に限りがあるため、譲り合ってご利用ください。食べ歩きはご遠慮いただいております。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        ---
+
+        <section id="summary" class="section">
+            <div class="container">
+                <h2>開催概要・アクセス</h2>
+                <table>
+                    <tr><th>イベント名</th><td>プラスワン (plus 1) 子育て応援イベント</td></tr>
+                    <tr><th>日時</th><td>2025年11月30日(日) 10:30〜15:00</td></tr>
+                    <tr><th>場所</th><td>㊆栗林商会アリーナ（室蘭市入江町１−６２）</td></tr>
+                    <tr><th>入場料</th><td>無料 (一部有料ブースあり)</td></tr>
+                    <tr><th>主催</th><td>プラスワン実行委員会</td></tr>
+                    <tr><th>アクセス</th><td>JR室蘭駅より徒歩約15分 / 道央自動車道 室蘭ICより車で約20分</td></tr>
+                </table>
+                
+                <div class="map-placeholder">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2950.082525658491!2d140.97406877604408!3d42.319438537667104!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5f9fdbc4bc9d0c3f%3A0x4c206676da257051!2z44qG5qCX5p6X5ZWG5Lya44Ki44Oq44O844OK!5e0!3m2!1sja!2sjp!4v1763607877257!5m2!1sja!2sjp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-nav">
+                <a href="#booths">ブース一覧</a> |
+                <a href="#timetable">時間割</a> |
+                <a href="#recruitment">募集情報</a> |
+                <a href="#summary">アクセス</a> |
+                <a href="#faq">FAQ</a>
+            </div>
+            <p style="margin-top: 10px;">© 2025 プラスワン実行委員会</p>
+            <div class="sns-links">
+                <a href="https://www.instagram.com/plus1_muroran/" target="_blank">Instagram</a> | 
+                <a href="mailto:example@example.com">お問い合わせ</a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#main-visual" id="pagetop">TOP</a>
+
+    <script>
+        // ====================================================================
+        // DATA DEFINITION
+        // ====================================================================
+        const boothsData = [
+            // データの量を増やしました
+            { id: 1, name: "手作り雑貨 Marimo", type: "handmade", description: "北欧風の布小物とアクセサリー。冬の新作多数。", url: "https://www.example.com/marimo" },
+            { id: 2, name: "パン工房 麦の穂", type: "food", description: "北海道小麦100%のふわふわパンと焼き菓子。当日限定クロワッサン。", url: "https://www.example.com/muginoho" },
+            { id: 3, name: "オリジナルキャンドル MIE", type: "workshop", description: "親子で楽しめるアロマキャンドル作り体験！予約優先。", url: "https://www.example.com/mie-candle" },
+            { id: 4, name: "ヒーリングサロン HANA", type: "healing", description: "肩こり解消マッサージとアロマテラピー。15分体験コース。", url: "https://www.example.com/hana-salon" },
+            { id: 5, name: "ベビーフォト HUG", type: "healing", description: "プロによるベビー/キッズ撮影会（要予約）。イベント価格で提供！", url: "https://www.example.com/baby-hug" },
+            { id: 6, name: "革細工 TAKUMI", type: "handmade", description: "手縫いの財布やキーケースなどレザーアイテム。名入れサービスあり。", url: "https://www.example.com/takumi-leather" },
+            { id: 7, name: "カフェ コロッケ", type: "food", description: "特製デミグラスソースのコロッケバーガー。限定100食！", url: "https://www.example.com/cafe-croquette" },
+            { id: 8, name: "木のオモチャ KIZARA", type: "workshop", description: "木工体験と、安心安全な木製おもちゃ販売。削り体験無料。", url: "https://www.example.com/kizara-toy" },
+            { id: 9, name: "アイシングクッキー SAKURA", type: "food", description: "可愛くて美味しいアイシングクッキー。デコレーション体験も。", url: "https://www.example.com/sakura" },
+            { id: 10, name: "手編みニット POKKE", type: "handmade", description: "ベビー用の帽子やマフラー。すべて手編みの温かいアイテム。", url: "https://www.example.com/pokke" },
+            { id: 11, name: "キッズネイル PURE", type: "healing", description: "子どもに優しい水溶性ネイル体験。キラキラのラメも用意！", url: "https://www.example.com/pure-nail" },
+            { id: 12, name: "ハーバリウム制作 ao", type: "workshop", description: "自分だけのオリジナルハーバリウムを作ろう。花材選びから楽しい！", url: "https://www.example.com/ao-herbarium" },
+            { id: 13, name: "タコライスキッチン TOMO", type: "food", description: "スパイシーなタコライスとポテト。軽食にぴったり。", url: "https://www.example.com/tomo-taco" },
+            { id: 14, name: "天然石アクセサリー jewel", type: "handmade", description: "誕生石やパワーストーンを使った華奢なアクセサリー。", url: "https://www.example.com/jewel" },
+            { id: 15, name: "おもちゃ病院", type: "workshop", description: "壊れたおもちゃの修理相談会。部品交換は実費。", url: "https://www.example.com/toy-hospital" },
+        ];
+        
+        // ====================================================================
+        // 1. COUNTDOWN TIMER FUNCTION
+        // ====================================================================
+        const eventDate = new Date("2025-11-30T10:30:00").getTime();
+        const countdownTimer = document.getElementById('countdown-timer');
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+
+            if (distance < 0) {
+                clearInterval(interval);
+                countdownTimer.innerHTML = "イベント開催中！";
+                document.getElementById('timer-container').style.backgroundColor = '#4a6c6f'; // 開催中カラー
+                return;
+            } 
+            
+            const days = Math.floor(distance / day);
+            const hours = Math.floor((distance % day) / hour);
+            const minutes = Math.floor((distance % hour) / minute);
+            const seconds = Math.floor((distance % minute) / second);
+            
+            // 開催まで1日を切ったら時間も表示
+            if (days < 1) {
+                countdownTimer.innerHTML = `${hours.toString().padStart(2, '0')}時間 ${minutes.toString().padStart(2, '0')}分 ${seconds.toString().padStart(2, '0')}秒！`;
+            } else {
+                countdownTimer.innerHTML = `${days}日 ${hours.toString().padStart(2, '0')}時間`;
+            }
+        }
+
+        updateCountdown();
+        const interval = setInterval(updateCountdown, 1000);
+
+        // ====================================================================
+        // 2. SCROLL & PAGETOP FUNCTION
+        // ====================================================================
+        const pagetop = document.getElementById('pagetop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) { // 300pxスクロールしたら表示
+                pagetop.style.display = 'block';
+            } else {
+                pagetop.style.display = 'none';
+            }
+        });
+
+
+        // ====================================================================
+        // 3. BOOTH LIST & FILTERING FUNCTION
+        // ====================================================================
+        const boothListElement = document.getElementById('booth-list');
+        const filterButtons = document.querySelectorAll('.filter-buttons button');
+
+        /** * タイプを日本語に変換するヘルパー関数
+         * @param {string} type - ブースのタイプ ('handmade', 'food', etc.)
+         * @returns {string} 日本語のタイプ名
+         */
+        function getJapaneseType(type) {
+            switch (type) {
+                case 'handmade': return 'ハンドメイド';
+                case 'food': return 'フード';
+                case 'workshop': return 'ワークショップ';
+                case 'healing': return '癒やし・美容';
+                default: return 'その他';
+            }
+        }
+
+        /** * ブースリストをHTMLにレンダリングする関数
+         * @param {string} filterType - フィルタリングするタイプ ('all', 'handmade', etc.)
+         */
+        function renderBooths(filterType = 'all') {
+            boothListElement.innerHTML = ''; 
+            
+            const filteredBooths = filterType === 'all'
+                ? boothsData
+                : boothsData.filter(booth => booth.type === filterType);
+            
+            if (filteredBooths.length === 0) {
+                boothListElement.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; padding: 30px;">現在、該当する出店ブースは準備中です。</p>';
+                return;
+            }
+
+            filteredBooths.forEach(booth => {
+                const linkWrapper = document.createElement('a');
+                linkWrapper.href = booth.url && booth.url !== '' ? booth.url : '#'; 
+                linkWrapper.target = "_blank"; 
+                linkWrapper.classList.add('booth-item-link');
+                
+                linkWrapper.innerHTML = `
+                    <div class="booth-item" data-type="${booth.type}">
+                        <h3>${booth.name}</h3>
+                        <p>${booth.description}</p>
+                        <span class="booth-type">${getJapaneseType(booth.type)}</span>
+                    </div>
+                `;
+                boothListElement.appendChild(linkWrapper);
+            });
+        }
+
+        // フィルタボタンにイベントリスナーを追加
+        filterButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                const filter = e.target.dataset.filter;
+                
+                // Activeクラスの切り替え
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+
+                // レンダリング実行
+                renderBooths(filter);
+            });
+        });
+
+        // ページロード時に全ブースを表示
+        renderBooths('all');
+
+
+        // ====================================================================
+        // 4. ACCORDION FAQ FUNCTION (アコーディオン機能を追加)
+        // ====================================================================
+        const faqItems = document.querySelectorAll('#faq .faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            
+            // 初期状態をすべて閉じた状態にする (CSSのmax-height: 0; と連動)
+            item.classList.remove('open'); 
+
+            question.addEventListener('click', () => {
+                const wasOpen = item.classList.contains('open');
+
+                // すべてのアイテムを閉じる (常に一つだけ開くようにする)
+                faqItems.forEach(i => {
+                    i.classList.remove('open');
+                });
+
+                // クリックしたアイテムが閉じていた場合、開く
+                if (!wasOpen) {
+                    item.classList.add('open');
+                }
+            });
+        });
+
+    </script>
+
+</body>
+</html>
